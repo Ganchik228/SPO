@@ -1,0 +1,3 @@
+Processor Architecture: 9
+Total Physical Memory: 10389770240 bytes
+Total Disk Space: 1081101176832 bytes

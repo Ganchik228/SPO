@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkAdjustment" id="adjustment">
+    <property name="upper">100000</property>
+    <property name="step_increment">100</property>
+    <property name="page_increment">1000</property>
+  </object>
+  <object class="GtkListStore" id="liststore_employees">
+    <columns>
+      <!-- column-name employee_id -->
+      <column type="guint"/>
+      <!-- column-name fio -->
+      <column type="gchararray"/>
+      <!-- column-name dr -->
+      <column type="gchararray"/>
+      <!-- column-name gender -->
+      <column type="gchararray"/>
+      <!-- column-name post_id -->
+      <column type="guint"/>
+      <!-- column-name post_name -->
+      <column type="gchararray"/>
+      <!-- column-name orga_id -->
+      <column type="guint"/>
+      <!-- column-name orga_name -->
+      <column type="gchararray"/>
+      <!-- column-name orga_inn -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="main_window">
+    <property name="name">window</property>
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">lab04</property>
+    <property name="window_position">center</property>
+    <property name="default_width">600</property>
+    <property name="default_height">400</property>
+    <signal name="destroy" handler="on_window_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkPaned" id="hpaned">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="wide_handle">True</property>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow_left">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkViewport" id="leftviewport">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButtonBox" id="buttonbox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_top">5</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">5</property>
+                    <property name="layout_style">start</property>
+                    <child>
+                      <object class="GtkButton" id="btnsave">
+                        <property name="label" translatable="yes">Сохранить в БД</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_btnsave_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="show_hidden">
+                        <property name="label" translatable="yes">Скрытые</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_show_hidden_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnabout">
+                        <property name="label" translatable="yes">О программе</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_btnabout_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnexit">
+                        <property name="label" translatable="yes">Выход</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <signal name="clicked" handler="on_btnexit_clicked" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">True</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow_right">
+            <property name="width_request">50</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="treeview_employees">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">liststore_employees</property>
+                <property name="enable_grid_lines">both</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection" id="selection">
+                    <property name="mode">multiple</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_employee_id">
+                    <property name="visible">False</property>
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">ID сотрудника</property>
+                    <child>
+                      <object class="GtkCellRendererSpin" id="cellrender_employee_id"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_fio">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">ФИО</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_fio">
+                        <property name="editable">True</property>
+                        <signal name="edited" handler="on_cellrenderertext_fio_edited" swapped="no"/>
+                      </object>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_dr">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Дата рождения</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_dr">
+                        <property name="editable">True</property>
+                        <signal name="edited" handler="on_cellrenderertext_dr_edited" swapped="no"/>
+                      </object>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_gender">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Пол</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_gender">
+                        <property name="editable">True</property>
+                        <signal name="edited" handler="on_cellrenderertext_gender_edited" swapped="no"/>
+                      </object>
+                      <attributes>
+                        <attribute name="text">3</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class ="GtkTreeViewColumn" id="column_post_id">
+                    <property name="visible">False</property>
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">id должность</property>
+                    <child>
+                      <object class="GtkCellRendererSpin" id="clnrender_post_id"/>
+                      <attributes>
+                        <attribute name="text">4</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_post_name">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Должность</property>
+                    <property name="clickable">True</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_post_name"/>
+                      <attributes>
+                        <attribute name="text">5</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>  
+                <child>
+                  <object class ="GtkTreeViewColumn" id="column_orga_id">
+                    <property name="visible">False</property>
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">id организация</property>
+                    <child>
+                      <object class="GtkCellRendererSpin" id="clnrender_orga_id"/>
+                      <attributes>
+                        <attribute name="text">6</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_orga_name">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">Организация</property>
+                    <property name="clickable">True</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_orga_name"/>
+                      <attributes>
+                        <attribute name="text">7</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="column_orga_inn">
+                    <property name="resizable">True</property>
+                    <property name="title" translatable="yes">ИНН</property>
+                    <property name="clickable">True</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrender_orga_inn"/>
+                      <attributes>
+                        <attribute name="text">8</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">False</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

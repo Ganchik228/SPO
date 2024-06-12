@@ -1,0 +1,16 @@
+{ time ./sequential_integration; } & { time ./parallel_integration; } & { time ./openmp_integration; }
+
+
+
+или отдельно 
+# Для программы из пункта 1
+gcc -o sequential_integration sequential_integration.c -lm
+time ./sequential_integration
+
+# Для программы из пункта 2
+gcc -o parallel_integration parallel_integration.c -lm -pthread
+time ./parallel_integration
+
+# Для программы из пункта 3
+gcc -o openmp_integration openmp_integration.c -lm -fopenmp
+time ./openmp_integration

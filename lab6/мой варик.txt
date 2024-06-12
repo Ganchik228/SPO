@@ -1,0 +1,11 @@
+gcc -o sequential_prime_search sequential_prime_search.c -lm
+
+time ./sequential_prime_search
+
+
+
+
+
+gcc -o parallel_prime_search parallel_prime_search.c -lm -pthread
+
+time ./parallel_prime_search

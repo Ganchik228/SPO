@@ -1,0 +1,6 @@
+cd C:/Users/Book/CLionProjects/rab
+
+
+gcc integration.c -o integration -lm
+
+./integration.exe

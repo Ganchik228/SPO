@@ -1,3 +1,0 @@
-gcc -o parallel_integration parallel_integration.c -lm -pthread
-
-./parallel_integration

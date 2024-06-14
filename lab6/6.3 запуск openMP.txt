@@ -1,3 +1,0 @@
-gcc -o openmp_integration openmp_integration.c -lm -fopenmp
-
-./openmp_integration
